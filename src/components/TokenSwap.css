@@ -2,7 +2,11 @@
  * @file TokenSwap.css
  * @description Styles for the TokenSwap component 
  * @author jake1318
+ * @updated 2025-01-30 07:42:39
  */
+
+/* Import Orbitron font */
+@import url("https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700&display=swap");
 
 :root {
   --header-height: 80px;
@@ -12,6 +16,7 @@
   --text-color: #e0e0e0;
   --card-bg: rgba(20, 20, 20, 0.95);
   --card-border: #00a3ff;
+  --font-primary: "Orbitron", sans-serif;
 }
 
 /* Swap Container */
@@ -23,6 +28,7 @@
   align-items: center;
   padding: 1rem;
   margin: auto;
+  font-family: var(--font-primary);
 }
 
 /* Swap Content */
@@ -44,10 +50,13 @@
 
 /* Title */
 .swap-card h1 {
+  font-family: var(--font-primary);
   font-size: 1.75rem;
   color: var(--primary-color);
   text-align: center;
   margin-bottom: 1.5rem;
+  font-weight: 700;
+  letter-spacing: 1px;
 }
 
 /* Token Selection */
@@ -56,7 +65,9 @@
   border: 1px solid rgba(0, 163, 255, 0.3);
   border-radius: 12px;
   padding: 1rem;
-  margin-bottom: 1rem;
+  margin-bottom: 2rem;
+  position: relative;
+  overflow: hidden;
 }
 
 /* Token Input */
@@ -64,6 +75,8 @@
   display: flex;
   gap: 0.5rem;
   margin-bottom: 0.5rem;
+  align-items: center;
+  width: 100%;
 }
 
 .input-group input {
@@ -71,9 +84,12 @@
   background: transparent;
   border: none;
   color: var(--text-color);
-  font-size: 1.5rem;
+  font-size: 1.25rem;
   padding: 0.5rem;
   text-align: right;
+  min-width: 0;
+  max-width: 100%;
+  font-family: var(--font-primary);
 }
 
 .input-group input:focus {
@@ -82,6 +98,18 @@
 
 .input-group input::placeholder {
   color: rgba(224, 224, 224, 0.5);
+}
+
+/* Balance Display */
+.balance-display {
+  font-size: 0.85rem;
+  color: var(--text-color);
+  opacity: 0.8;
+  text-align: right;
+  margin-top: 0.25rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 /* Max Button */
@@ -94,6 +122,8 @@
   font-size: 0.8rem;
   cursor: pointer;
   transition: all 0.3s ease;
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 
 .max-btn:hover {
@@ -103,16 +133,36 @@
 
 /* Token Select */
 .token-select {
-  width: 100%;
+  width: auto;
+  min-width: 120px;
   padding: 12px;
   background: rgba(30, 30, 30, 0.95);
   border: 1px solid var(--primary-color);
   border-radius: 12px;
   color: var(--text-color);
   font-size: 1rem;
+  font-family: var(--font-primary);
+  margin-left: auto;
 }
 
-/* Slippage Settings Fix */
+/* Slippage Settings */
+.slippage-settings {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 1rem;
+  padding: 0.5rem;
+  background: rgba(30, 30, 30, 0.95);
+  border-radius: 8px;
+  font-family: var(--font-primary);
+  font-weight: 500;
+}
+
+.slippage-settings span {
+  color: var(--text-color);
+  font-size: 0.9rem;
+}
+
 .slippage-settings input {
   width: 60px;
   padding: 5px;
@@ -121,4 +171,166 @@
   background: rgba(20, 20, 20, 0.8);
   color: var(--text-color);
   text-align: center;
+  font-family: var(--font-primary);
+}
+
+/* Price Info */
+.price-info {
+  margin: 1rem 0;
+  padding: 0.5rem;
+  color: var(--text-color);
+  font-size: 0.9rem;
+  text-align: center;
+  opacity: 0.8;
+  font-family: var(--font-primary);
+  font-weight: 400;
+}
+
+/* Swap Direction Button */
+.swap-direction-button {
+  width: 40px;
+  height: 40px;
+  background: var(--card-bg) !important;
+  border: 1px solid var(--primary-color) !important;
+  border-radius: 50% !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  color: var(--primary-color) !important;
+  font-size: 1.5rem;
+  padding: 0 !important;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-top: -20px;
+  z-index: 2;
+  font-family: var(--font-primary);
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+.swap-direction-button:hover {
+  background: var(--primary-color) !important;
+  border-color: var(--primary-color) !important;
+  color: var(--card-bg) !important;
+}
+
+.swap-direction-button span {
+  display: inline-block;
+  transition: transform 0.3s ease;
+}
+
+.swap-direction-button:hover span {
+  transform: rotate(180deg);
+}
+
+.swap-direction-button:focus,
+.swap-direction-button:focus-visible {
+  outline: none !important;
+}
+
+.swap-direction-button:active {
+  transform: translateX(-50%) scale(0.95);
+}
+
+/* Animation for arrow rotation */
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(180deg);
+  }
+}
+
+.rotating {
+  animation: rotate 0.3s ease;
+}
+
+/* Connect Wallet and Swap Button Styles */
+.swap-button {
+  width: 100%;
+  padding: 16px !important;
+  margin-top: 1.5rem;
+  background: var(--primary-color) !important;
+  border: none !important;
+  border-radius: 12px !important;
+  color: #000 !important;
+  font-size: 1.1rem !important;
+  font-weight: 600 !important;
+  cursor: pointer;
+  transition: all 0.3s ease !important;
+  text-transform: none !important;
+  line-height: 1.2 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 8px;
+  min-height: 56px;
+  font-family: var(--font-primary);
+  letter-spacing: 0.5px;
+}
+
+.swap-button:hover {
+  background: #1aacff !important;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 163, 255, 0.3);
+}
+
+.swap-button:active {
+  transform: translateY(0);
+}
+
+.swap-button:disabled {
+  background: rgba(0, 163, 255, 0.3) !important;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+  opacity: 0.7;
+}
+
+/* Style for the Connect Button specifically */
+.swap-button[class*="connect"] {
+  background: transparent !important;
+  border: 2px solid var(--primary-color) !important;
+  color: var(--primary-color) !important;
+}
+
+.swap-button[class*="connect"]:hover {
+  background: var(--primary-color) !important;
+  color: var(--card-bg) !important;
+}
+
+/* Loading message style */
+.loading-message {
+  margin-top: 1rem;
+  color: var(--text-color);
+  font-size: 0.9rem;
+  text-align: center;
+  word-break: break-all;
+  opacity: 0.8;
+  font-family: var(--font-primary);
+  font-weight: 400;
+}
+
+/* Responsive Design */
+@media (max-width: 480px) {
+  .swap-content {
+    padding: 0.5rem;
+  }
+
+  .swap-card {
+    padding: 1rem;
+  }
+
+  .input-group input {
+    font-size: 1rem;
+  }
+
+  .token-select {
+    font-size: 0.9rem;
+    min-width: 100px;
+  }
 }
