@@ -1,9 +1,4 @@
-/** 
- * @file App.css
- * @description Main application styles 
- * @author jake1318
- */
-
+/* src/App.css */
 :root {
   --header-height: 80px;
   --footer-height: 60px;
@@ -28,23 +23,18 @@ body {
   margin: 0;
   padding: 0;
   overflow: hidden;
-  padding-top: var(--header-height); /* Prevent header from overlapping */
   background: var(--background-dark);
   color: var(--text-color);
   font-family: "Inter", sans-serif;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
-/* Ensure the main container fills the viewport and centers content */
-.main-container {
-  display: flex;
-  flex-direction: column;
+/* App Container */
+.app-container {
   min-height: 100vh;
   width: 100%;
-  justify-content: center;
-  align-items: center; /* Centers everything horizontally */
+  display: flex;
+  flex-direction: column;
+  padding-top: var(--header-height);
 }
 
 /* Header */
@@ -54,79 +44,31 @@ body {
   left: 0;
   right: 0;
   height: var(--header-height);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
   background: rgba(0, 0, 0, 0.8);
   backdrop-filter: blur(10px);
   border-bottom: 1px solid rgba(0, 163, 255, 0.2);
-  padding: 1rem;
   z-index: 1000;
-  text-align: center;
-  width: 100%;
 }
 
-/* Main Content - Center the swap container properly */
-.app-main {
-  flex: 1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  padding-bottom: var(--footer-height);
-  min-height: calc(100vh - var(--header-height) - var(--footer-height));
-  text-align: center;
-}
-
-/* Swap Container - Center the swap UI */
-.swap-container {
-  width: 100%;
-  max-width: 450px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 1rem;
-}
-
-/* Footer - Ensure it remains visible */
+/* Footer */
 .footer {
   height: var(--footer-height);
   background: rgba(0, 0, 0, 0.8);
   backdrop-filter: blur(10px);
   border-top: 1px solid rgba(0, 163, 255, 0.2);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
   position: fixed;
   bottom: 0;
   left: 0;
-}
-
-.footer p {
-  color: var(--secondary-color);
-  font-size: 0.875rem;
-}
-/* Footer - Ensure it remains centered at the bottom */
-.footer {
-  height: var(--footer-height);
-  background: rgba(0, 0, 0, 0.8);
-  backdrop-filter: blur(10px);
-  border-top: 1px solid rgba(0, 163, 255, 0.2);
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100%;
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  text-align: center;
+  z-index: 1000;
 }
 
-.footer p {
-  color: var(--secondary-color);
-  font-size: 0.875rem;
-  width: 100%;
-  text-align: center; /* Ensures text inside footer is centered */
+/* Media Queries */
+@media (max-width: 768px) {
+  .full-width-page {
+    padding: 1rem;
+  }
 }

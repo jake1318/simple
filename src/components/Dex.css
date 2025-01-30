@@ -1,13 +1,15 @@
-/* src/pages/Dex/Dex.css */
-
+/* src/components/Dex.css */
 .dex-container {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
   padding: 2rem;
-  max-width: 1200px;
-  margin: 0 auto;
-  color: #ffffff;
 }
 
 .dex-content {
+  width: 100%;
   background: rgba(20, 20, 20, 0.95);
   border: 1px solid #00a3ff;
   border-radius: 12px;
@@ -30,12 +32,6 @@
   margin: 0;
 }
 
-.status-info {
-  display: flex;
-  gap: 1rem;
-  align-items: center;
-}
-
 .status-badge {
   background: rgba(0, 255, 255, 0.1);
   color: #00ffff;
@@ -45,20 +41,21 @@
   border: 1px solid #00ffff;
 }
 
-.time-badge {
-  color: #888;
-  font-size: 0.9rem;
-}
-
 .feature-preview {
   margin: 2rem 0;
 }
 
+.feature-preview h2 {
+  color: var(--primary-color);
+  margin-bottom: 1.5rem;
+  font-family: "Orbitron", sans-serif;
+}
+
 .feature-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 1.5rem;
-  margin-top: 1rem;
+  width: 100%;
 }
 
 .feature-card {
@@ -76,7 +73,7 @@
 
 .feature-card h3 {
   color: #00ffff;
-  margin-top: 0;
+  margin-bottom: 1rem;
   font-family: "Orbitron", sans-serif;
 }
 
@@ -137,7 +134,7 @@
 }
 
 @media (max-width: 768px) {
-  .dex-container {
+  .dex-content {
     padding: 1rem;
   }
 
@@ -155,22 +152,4 @@
     flex-direction: column;
     text-align: center;
   }
-}
-/* Adjusting for the Navbar */
-.dex-container {
-  padding: 6rem 2rem 2rem; /* Increased top padding */
-  max-width: 1200px;
-  margin: 0 auto;
-  color: #ffffff;
-}
-
-/* Ensure the navbar does not overlap */
-.dex-header {
-  margin-top: 2rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 2rem;
-  padding-bottom: 1rem;
-  border-bottom: 1px solid rgba(0, 163, 255, 0.3);
 }

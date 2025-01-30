@@ -7,7 +7,8 @@ const Navbar: React.FC = () => {
   const account = useCurrentAccount();
 
   // Define which pages are active (currently only "swap" and "home")
-  const activePages = ["/", "/swap"]; // Modify this as new pages are added
+  // Update the activePages array (line 10) to include the new routes:
+  const activePages = ["/", "/swap", "/dex", "/marketplace"]; // Added "/dex" and "/marketplace"
 
   return (
     <nav className="navbar">
