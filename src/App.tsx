@@ -4,7 +4,10 @@ import {
   createNetworkConfig,
 } from "@mysten/dapp-kit";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import TokenSwap from "./components/TokenSwap"; // Changed to default import
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import TokenSwap from "./components/TokenSwap"; // Default import
+import Navbar from "./components/Navbar"; // Import Navbar component
+import Footer from "./components/Footer"; // Import Footer component
 import "@mysten/dapp-kit/dist/index.css";
 import "./App.css";
 
@@ -21,21 +24,18 @@ function App() {
     <QueryClientProvider client={queryClient}>
       <SuiClientProvider networks={networkConfig} defaultNetwork="mainnet">
         <WalletProvider autoConnect>
-          <div className="app-container">
-            <header className="app-header">
-              <div className="header-info">
-                <span className="timestamp">UTC: 2025-01-30 05:12:28</span>
-                <span className="user-info">User: jake1318</span>
-              </div>
-              <h1>DeepBook Mainnet Swap</h1>
-            </header>
-            <main className="app-main">
-              <TokenSwap />
-            </main>
-            <footer className="app-footer">
-              <p>Built with DeepBook V3 SDK on Sui Mainnet</p>
-            </footer>
-          </div>
+          <Router>
+            <div className="app-container">
+              <Navbar /> {/* Navbar remains at the top */}
+              <main className="app-main">
+                <Routes>
+                  <Route path="/swap" element={<TokenSwap />} />
+                  {/* Add more routes as you create pages */}
+                </Routes>
+              </main>
+              <Footer /> {/* Footer remains at the bottom */}
+            </div>
+          </Router>
         </WalletProvider>
       </SuiClientProvider>
     </QueryClientProvider>

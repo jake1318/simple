@@ -1,0 +1,124 @@
+/** 
+ * @file TokenSwap.css
+ * @description Styles for the TokenSwap component 
+ * @author jake1318
+ */
+
+:root {
+  --header-height: 80px;
+  --footer-height: 60px;
+  --primary-color: #00a3ff;
+  --secondary-color: #87cefa;
+  --text-color: #e0e0e0;
+  --card-bg: rgba(20, 20, 20, 0.95);
+  --card-border: #00a3ff;
+}
+
+/* Swap Container */
+.swap-container {
+  flex-grow: 1;
+  overflow: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+  margin: auto;
+}
+
+/* Swap Content */
+.swap-content {
+  width: 100%;
+  max-width: 440px;
+  margin: 2rem auto;
+  padding: 1rem;
+}
+
+/* Swap Card */
+.swap-card {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 16px;
+  padding: 1.5rem;
+  box-shadow: 0 0 20px rgba(0, 163, 255, 0.15);
+}
+
+/* Title */
+.swap-card h1 {
+  font-size: 1.75rem;
+  color: var(--primary-color);
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+/* Token Selection */
+.token-section {
+  background: rgba(30, 30, 30, 0.95);
+  border: 1px solid rgba(0, 163, 255, 0.3);
+  border-radius: 12px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
+
+/* Token Input */
+.input-group {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.input-group input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  color: var(--text-color);
+  font-size: 1.5rem;
+  padding: 0.5rem;
+  text-align: right;
+}
+
+.input-group input:focus {
+  outline: none;
+}
+
+.input-group input::placeholder {
+  color: rgba(224, 224, 224, 0.5);
+}
+
+/* Max Button */
+.max-btn {
+  background: rgba(0, 163, 255, 0.15);
+  border: 1px solid var(--primary-color);
+  border-radius: 8px;
+  color: var(--primary-color);
+  padding: 4px 8px;
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.max-btn:hover {
+  background: var(--primary-color);
+  color: #1a1a1a;
+}
+
+/* Token Select */
+.token-select {
+  width: 100%;
+  padding: 12px;
+  background: rgba(30, 30, 30, 0.95);
+  border: 1px solid var(--primary-color);
+  border-radius: 12px;
+  color: var(--text-color);
+  font-size: 1rem;
+}
+
+/* Slippage Settings Fix */
+.slippage-settings input {
+  width: 60px;
+  padding: 5px;
+  border: 1px solid var(--primary-color);
+  border-radius: 6px;
+  background: rgba(20, 20, 20, 0.8);
+  color: var(--text-color);
+  text-align: center;
+}

@@ -1,80 +1,132 @@
-.swap-container {
-  padding: 24px;
-  max-width: 480px;
-  margin: 0 auto;
+/** 
+ * @file App.css
+ * @description Main application styles 
+ * @author jake1318
+ */
+
+:root {
+  --header-height: 80px;
+  --footer-height: 60px;
+  --primary-color: #00a3ff;
+  --secondary-color: #87cefa;
+  --text-color: #e0e0e0;
+  --background-dark: #000000;
+  --background-gradient: linear-gradient(135deg, #1e1e1e, #000000);
 }
 
-.meta-info {
-  background: rgba(0, 0, 0, 0.05);
-  padding: 12px;
-  border-radius: 8px;
-  margin-bottom: 24px;
-  font-family: monospace;
+/* Reset and Base Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-.timestamp,
-.user-info {
-  color: #666;
-  font-size: 0.9em;
+html,
+body {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  padding-top: var(--header-height); /* Prevent header from overlapping */
+  background: var(--background-dark);
+  color: var(--text-color);
+  font-family: "Inter", sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.swap-form {
+/* Ensure the main container fills the viewport and centers content */
+.main-container {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  min-height: 100vh;
+  width: 100%;
+  justify-content: center;
+  align-items: center; /* Centers everything horizontally */
 }
 
-.swap-buttons {
+/* Header */
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: var(--header-height);
   display: flex;
-  gap: 12px;
-  flex-direction: column;
-}
-
-.swap-button {
-  padding: 12px 24px;
-  border-radius: 8px;
-  border: none;
-  background: #0070f3;
-  color: white;
-  font-size: 1em;
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
-
-.swap-button:hover {
-  background: #0051cc;
-  transform: translateY(-1px);
-}
-
-.swap-button:active {
-  transform: translateY(0);
-}
-
-.transaction-info {
-  background: #f5f5f5;
-  padding: 16px;
-  border-radius: 8px;
-}
-
-.transaction-info h3 {
-  margin: 0 0 8px 0;
-  font-size: 1em;
-  color: #333;
-}
-
-.transaction-info code {
-  display: block;
-  word-break: break-all;
-  padding: 8px;
-  background: #fff;
-  border-radius: 4px;
-  font-size: 0.9em;
-}
-
-.connect-prompt {
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(0, 163, 255, 0.2);
+  padding: 1rem;
+  z-index: 1000;
   text-align: center;
-  color: #666;
-  padding: 24px;
-  background: #f5f5f5;
-  border-radius: 8px;
+  width: 100%;
+}
+
+/* Main Content - Center the swap container properly */
+.app-main {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding-bottom: var(--footer-height);
+  min-height: calc(100vh - var(--header-height) - var(--footer-height));
+  text-align: center;
+}
+
+/* Swap Container - Center the swap UI */
+.swap-container {
+  width: 100%;
+  max-width: 450px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+}
+
+/* Footer - Ensure it remains visible */
+.footer {
+  height: var(--footer-height);
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(10px);
+  border-top: 1px solid rgba(0, 163, 255, 0.2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+}
+
+.footer p {
+  color: var(--secondary-color);
+  font-size: 0.875rem;
+}
+/* Footer - Ensure it remains centered at the bottom */
+.footer {
+  height: var(--footer-height);
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(10px);
+  border-top: 1px solid rgba(0, 163, 255, 0.2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  text-align: center;
+}
+
+.footer p {
+  color: var(--secondary-color);
+  font-size: 0.875rem;
+  width: 100%;
+  text-align: center; /* Ensures text inside footer is centered */
 }
