@@ -1,0 +1,356 @@
+/**
+ * @file HomePage.css
+ * @description Styles for the Home page component
+ * @author jake1318
+ * @updated 2025-01-29 02:31:15
+ */
+
+/* Reset default styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Global styles */
+body {
+  font-family: "Orbitron", sans-serif;
+  background-color: #252525;
+  color: #e0e0e0;
+  line-height: 1.5;
+}
+
+/* Hero Section - Specific to HomePage */
+.home-hero {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background: url("/Design_2.png") no-repeat center center;
+  background-size: cover;
+  color: #e0e0e0;
+  position: relative;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+}
+
+.home-hero::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1;
+}
+
+.home-hero h1,
+.home-hero p,
+.home-hero .cta-button {
+  position: relative;
+  z-index: 2;
+}
+
+.home-hero h1 {
+  font-size: 3rem;
+  color: #00a3ff;
+  text-shadow: 0 0 10px #00a3ff;
+  margin-bottom: 1rem;
+}
+
+.home-hero p {
+  font-size: 1.5rem;
+  color: #87cefa;
+  text-shadow: 0 0 5px rgba(135, 206, 250, 0.5);
+  margin-bottom: 2rem;
+}
+
+/* CTA Button - Explore Sui Mind */
+.cta-button {
+  background-color: transparent;
+  border: 2px solid #00a3ff;
+  color: #00a3ff;
+  padding: 10px 20px;
+  border-radius: 5px;
+  text-decoration: none;
+  font-size: 1.2rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 5px #00a3ff;
+  cursor: pointer;
+  display: inline-block;
+}
+
+.cta-button:hover {
+  background-color: #00a3ff;
+  color: #1a1a1a;
+  box-shadow: 0 0 15px #00a3ff;
+  transform: translateY(-2px);
+}
+
+/* Combined Section */
+.combined-section {
+  width: 100%;
+  margin: 0;
+  padding: 60px 2rem;
+  background: linear-gradient(-45deg, #1e1e1e, #00a3ff, #252525, #87cefa);
+  background-size: 400% 400%;
+  animation: gradientShift 10s ease infinite;
+  border-radius: 10px;
+}
+
+.features {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.features h2 {
+  font-size: 3rem;
+  color: #87cefa;
+  text-shadow: 0 0 5px #87cefa;
+  margin-bottom: 1.5rem;
+}
+
+.grid-container {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.feature {
+  background-color: rgba(30, 30, 30, 0.8);
+  border: 1px solid #333;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.feature:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 8px 20px rgba(0, 163, 255, 0.5);
+}
+
+.feature h3 {
+  font-size: 1.5rem;
+  color: #00a3ff;
+  margin-bottom: 0.5rem;
+}
+
+.feature p {
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+/* Community Section */
+.community {
+  text-align: center;
+  margin: 3rem auto;
+  padding: 2rem;
+  width: 100%;
+  max-width: 1400px;
+}
+
+.community h2 {
+  font-size: 2.5rem;
+  color: #87cefa;
+  text-shadow: 0 0 5px #87cefa;
+  margin-bottom: 1.5rem;
+}
+
+.community p {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+  color: #ffffff;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  text-shadow: 0 0 2px rgba(0, 0, 0, 0.5);
+  font-weight: 500;
+}
+
+/* Social Icons - X Button */
+.social-icons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.social-icon {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  color: #00a3ff;
+  text-decoration: none;
+  font-size: 1.1rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  padding: 0.75rem 1.5rem;
+  border: 2px solid #00a3ff;
+  border-radius: 5px;
+  background-color: transparent;
+  box-shadow: 0 0 5px #00a3ff;
+}
+
+.social-icon:hover {
+  transform: translateY(-2px);
+  background-color: #00a3ff;
+  color: #1a1a1a;
+  box-shadow: 0 0 15px #00a3ff;
+}
+
+.x-logo {
+  width: 24px;
+  height: 24px;
+  margin-left: 0.75rem;
+  fill: currentColor;
+  transition: fill 0.3s ease;
+}
+
+/* Contact Section */
+.contact {
+  text-align: center;
+  margin-top: 3rem;
+  padding-bottom: 2rem;
+}
+
+.contact h2 {
+  font-size: 2.5rem;
+  color: #87cefa;
+  margin-bottom: 1rem;
+}
+
+.contact p {
+  font-size: 1.2rem;
+  margin-bottom: 1.5rem;
+}
+
+.contact form {
+  max-width: 600px;
+  margin: 0 auto 1rem;
+}
+
+.contact input,
+.contact textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  background: rgba(30, 30, 30, 0.8);
+  color: #e0e0e0;
+  border: 1px solid #00a3ff;
+  border-radius: 5px;
+  font-size: 1rem;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.contact input:focus,
+.contact textarea:focus {
+  outline: none;
+  border-color: #87cefa;
+  box-shadow: 0 0 5px rgba(135, 206, 250, 0.5);
+}
+
+.contact textarea {
+  height: 120px;
+  resize: vertical;
+}
+
+.contact button {
+  width: 100%;
+  padding: 10px;
+  background-color: transparent;
+  color: #87cefa;
+  border: 2px solid #87cefa;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.contact button:hover {
+  background-color: #87cefa;
+  color: #1a1a1a;
+  box-shadow: 0 0 15px #87cefa;
+}
+
+/* Form Footer */
+.form-footer {
+  margin-top: 1rem;
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.timestamp {
+  font-family: monospace;
+  color: #87cefa;
+  opacity: 0.7;
+}
+
+/* Gradient Animation */
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .home-hero h1 {
+    font-size: 2.5rem;
+  }
+
+  .home-hero p {
+    font-size: 1.2rem;
+  }
+
+  .features h2 {
+    font-size: 2.5rem;
+  }
+
+  .community {
+    margin: 2rem 1rem;
+    padding: 1.5rem;
+  }
+
+  .social-icons {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .social-icon {
+    width: 100%;
+    max-width: 300px;
+    justify-content: center;
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 480px) {
+  .home-hero h1 {
+    font-size: 2rem;
+  }
+
+  .home-hero p {
+    font-size: 1rem;
+  }
+
+  .features h2 {
+    font-size: 2rem;
+  }
+}
+
+/* Last updated by jake1318 on 2025-01-29 02:31:15 UTC */

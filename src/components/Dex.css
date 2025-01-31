@@ -1,20 +1,54 @@
-/* src/components/Dex.css */
+/** 
+ * @file Dex.css
+ * @description Styles for the DEX component
+ * @author jake1318
+ * @updated 2025-01-31 01:57:58
+ */
+
+/* Reset any potential body/html scrolling but allow for navbar */
+html,
+body {
+  overflow: hidden;
+  height: 100%;
+}
+
+.page-container {
+  display: flex;
+  flex-direction: column;
+  /* Account for both navbar (64px) and footer (48px) */
+  height: calc(100vh - 64px - 48px);
+  overflow: hidden;
+  position: fixed;
+  top: 64px; /* Navbar height */
+  left: 0;
+  right: 0;
+  bottom: 48px; /* Footer height */
+}
+
 .dex-container {
+  flex: 1;
   width: 100%;
-  min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: flex-start;
   padding: 2rem;
+  overflow-y: scroll;
+  height: 100%;
+  /* Add padding at the bottom to prevent footer overlap */
+  padding-bottom: 3rem;
 }
 
 .dex-content {
   width: 100%;
+  max-width: 1200px;
   background: rgba(20, 20, 20, 0.95);
   border: 1px solid #00a3ff;
   border-radius: 12px;
   padding: 2rem;
   box-shadow: 0 0 20px rgba(0, 163, 255, 0.2);
+  overflow: hidden;
+  /* Ensure last elements don't get cut off */
+  margin-bottom: 1rem;
 }
 
 .dex-header {
@@ -134,6 +168,17 @@
 }
 
 @media (max-width: 768px) {
+  .page-container {
+    /* Adjust for potentially taller navbar on mobile */
+    height: calc(100vh - 64px - 48px);
+  }
+
+  .dex-container {
+    padding: 1rem;
+    /* Increase bottom padding on mobile */
+    padding-bottom: 4rem;
+  }
+
   .dex-content {
     padding: 1rem;
   }

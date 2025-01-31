@@ -2,32 +2,53 @@
  * @file MarketPlace.css
  * @description Styles for the AI agent marketplace component
  * @author jake1318
- * @updated 2025-01-31
+ * @updated 2025-01-31 01:43:46
  */
+
+/* Reset any potential body/html scrolling but allow for navbar */
+html,
+body {
+  overflow: hidden;
+  height: 100%;
+}
 
 .page-container {
   display: flex;
   flex-direction: column;
-  min-height: 100vh; /* Full viewport height */
+  /* Account for both navbar (64px) and footer (48px) */
+  height: calc(100vh - 64px - 48px);
+  overflow: hidden;
+  position: fixed;
+  top: 64px; /* Navbar height */
+  left: 0;
+  right: 0;
+  bottom: 48px; /* Footer height */
 }
 
 .marketplace-container {
-  flex-grow: 1; /* Pushes footer down */
+  flex: 1;
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: flex-start;
   padding: 2rem;
-  overflow: auto; /* Prevents hidden content */
+  overflow-y: scroll;
+  height: 100%;
+  /* Add padding at the bottom to prevent footer overlap */
+  padding-bottom: 3rem;
 }
 
 .marketplace-content {
   width: 100%;
+  max-width: 1200px;
   background: rgba(20, 20, 20, 0.95);
   border: 1px solid #00a3ff;
   border-radius: 12px;
   padding: 2rem;
   box-shadow: 0 0 20px rgba(0, 163, 255, 0.2);
+  overflow: hidden;
+  /* Ensure last elements don't get cut off */
+  margin-bottom: 1rem;
 }
 
 .marketplace-header {
@@ -111,6 +132,15 @@
   color: #1a1a1a;
   border: none;
   font-weight: bold;
+  padding: 0.5rem 1.5rem;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.notify-button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(0, 163, 255, 0.3);
 }
 
 .connect-prompt {
@@ -158,6 +188,17 @@
 
 /* Responsive Design */
 @media (max-width: 768px) {
+  .page-container {
+    /* Adjust for potentially taller navbar on mobile */
+    height: calc(100vh - 64px - 48px);
+  }
+
+  .marketplace-container {
+    padding: 1rem;
+    /* Increase bottom padding on mobile */
+    padding-bottom: 4rem;
+  }
+
   .marketplace-header {
     flex-direction: column;
     gap: 1rem;
