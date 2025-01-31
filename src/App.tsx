@@ -5,12 +5,7 @@ import {
   createNetworkConfig,
 } from "@mysten/dapp-kit";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import {
-  BrowserRouter as Router,
-  Routes,
-  Route,
-  Navigate,
-} from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import TokenSwap from "./components/TokenSwap";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
