@@ -2,7 +2,7 @@
  * @file HomePage.tsx
  * @description Home page component for Sui Mind
  * @author jake1318
- * @updated 2025-01-29 02:29:00 UTC
+ * @updated 2025-01-31 04:36:15 UTC
  */
 
 import React from "react";
@@ -10,7 +10,7 @@ import "./HomePage.css";
 
 const HomePage: React.FC = () => {
   return (
-    <main>
+    <div className="home-page">
       <section id="home" className="home-hero">
         <h1>Sui Mind - AI Meets Blockchain</h1>
         <p>Revolutionizing AI Applications on the Sui Network</p>
@@ -91,24 +91,15 @@ const HomePage: React.FC = () => {
           <p>
             We'd love to hear from you. Fill out the form below to get in touch!
           </p>
-          <form id="contactForm" action="contact.php" method="POST">
-            <input
-              type="email"
-              name="email"
-              placeholder="Your Email"
-              required
-            />
-            <textarea
-              name="message"
-              placeholder="Your Message"
-              required
-            ></textarea>
+          <form onSubmit={(e) => e.preventDefault()}>
+            <input type="email" placeholder="Your Email" required />
+            <textarea placeholder="Your Message" required></textarea>
             <button type="submit">Send</button>
           </form>
           <div className="form-footer"></div>
         </div>
       </section>
-    </main>
+    </div>
   );
 };
 
