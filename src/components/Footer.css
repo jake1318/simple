@@ -1,10 +1,11 @@
 .footer {
+  position: relative; /* Prevents overlap */
+  width: 100%;
   background: rgba(26, 26, 26, 0.95);
   backdrop-filter: blur(8px);
   border-top: 1px solid rgba(0, 163, 255, 0.2);
   padding: 1.5rem 0;
-  width: 100%;
-  margin-top: auto;
+  margin-top: auto; /* Push footer down when content is short */
 }
 
 .footer-content {
@@ -20,33 +21,12 @@
   font-family: "Orbitron", sans-serif;
 }
 
+/* Responsive Fix */
 @media (max-width: 768px) {
   .footer {
     padding: 1rem 0;
   }
-
   .footer-content {
     padding: 0 1rem;
   }
 }
-.footer {
-  position: relative;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background: rgba(26, 26, 26, 0.95);
-  backdrop-filter: blur(8px);
-  border-top: 1px solid rgba(0, 163, 255, 0.2);
-  padding: 1.5rem 0;
-  width: 100%;
-  margin-top: auto;
-}
-
-.footer-content {
-  max-width: 100%;
-  margin: 0 auto;
-  padding: 0 2rem;
-  text-align: center;
-}
-
-/* Rest of your existing footer styles */

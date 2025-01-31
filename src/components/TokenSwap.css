@@ -18,7 +18,22 @@
   --card-border: #00a3ff;
   --font-primary: "Orbitron", sans-serif;
 }
+/* src/components/TokenSwap.css */
+.swap-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 2rem;
+}
 
+.swap-content {
+  width: 100%;
+  max-width: 440px; /* This ensures the swap stays at a reasonable width */
+  margin: 0 auto;
+}
+
+/* Keep the rest of your existing TokenSwap.css styles... */
 /* Swap Container */
 .swap-container {
   display: flex;

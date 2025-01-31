@@ -1,11 +1,24 @@
-/* src/components/Marketplace.css */
+/** 
+ * @file MarketPlace.css
+ * @description Styles for the AI agent marketplace component
+ * @author jake1318
+ * @updated 2025-01-31
+ */
+
+.page-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Full viewport height */
+}
+
 .marketplace-container {
+  flex-grow: 1; /* Pushes footer down */
   width: 100%;
-  min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: flex-start;
   padding: 2rem;
+  overflow: auto; /* Prevents hidden content */
 }
 
 .marketplace-content {
@@ -32,7 +45,6 @@
   margin: 0;
 }
 
-/* Reuse the same styles from Dex.css for common components */
 .status-badge {
   background: rgba(0, 255, 255, 0.1);
   color: #00ffff;
@@ -52,14 +64,16 @@
   font-family: "Orbitron", sans-serif;
 }
 
-.feature-grid {
+.feature-grid,
+.category-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 1.5rem;
   width: 100%;
 }
 
-.feature-card {
+.feature-card,
+.category-item {
   background: rgba(0, 163, 255, 0.05);
   border: 1px solid rgba(0, 163, 255, 0.2);
   border-radius: 8px;
@@ -67,12 +81,95 @@
   transition: all 0.3s ease;
 }
 
-.feature-card:hover {
+.feature-card:hover,
+.category-item:hover {
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(0, 163, 255, 0.2);
 }
 
-.feature-card h3 {
+.feature-card h3,
+.category-item h4 {
   color: #00ffff;
   margin-bottom: 1rem;
+}
+
+.user-section {
+  margin: 2rem 0;
+  padding: 1.5rem;
+  background: rgba(0, 163, 255, 0.05);
+  border-radius: 8px;
+}
+
+.connected-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.notify-button {
+  background: linear-gradient(45deg, #00a3ff, #00ffff);
+  color: #1a1a1a;
+  border: none;
+  font-weight: bold;
+}
+
+.connect-prompt {
+  text-align: center;
+  color: #00ffff;
+}
+
+.development-info {
+  margin-top: 2rem;
+}
+
+.timeline {
+  display: grid;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.timeline-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.phase {
+  color: #00ffff;
+  font-weight: bold;
+  min-width: 80px;
+}
+
+.agent-categories {
+  margin-top: 2rem;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(0, 163, 255, 0.3);
+}
+
+.agent-categories h3 {
+  color: var(--primary-color);
+  margin-bottom: 1.5rem;
+  font-family: "Orbitron", sans-serif;
+}
+
+.category-item p {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .marketplace-header {
+    flex-direction: column;
+    gap: 1rem;
+    align-items: flex-start;
+  }
+
+  .connected-info {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .category-grid {
+    grid-template-columns: 1fr;
+  }
 }
