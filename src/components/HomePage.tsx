@@ -2,7 +2,7 @@
  * @file HomePage.tsx
  * @description Home page component for Sui Mind
  * @author jake1318
- * @updated 2025-01-31 04:36:15 UTC
+ * @updated 2025-01-31 04:48:21 UTC
  */
 
 import React from "react";

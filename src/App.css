@@ -16,6 +16,35 @@
   box-sizing: border-box;
 }
 
+/* Scrollbar Styles */
+::-webkit-scrollbar {
+  width: 10px;
+  background: rgba(0, 0, 0, 0.2);
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(30, 30, 30, 0.8);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--primary-color);
+  border-radius: 5px;
+  border: 2px solid rgba(30, 30, 30, 0.8);
+  box-shadow: 0 0 10px var(--primary-color);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--secondary-color);
+  box-shadow: 0 0 15px var(--secondary-color);
+}
+
+/* Firefox Scrollbar Styles */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--primary-color) rgba(30, 30, 30, 0.8);
+}
+
 html,
 body {
   height: 100%;
@@ -25,6 +54,7 @@ body {
   background: var(--background-dark);
   color: var(--text-color);
   font-family: "Inter", sans-serif;
+  overflow-y: auto;
 }
 
 /* App Container */
@@ -34,6 +64,7 @@ body {
   display: flex;
   flex-direction: column;
   position: relative;
+  overflow-y: auto;
 }
 
 /* Main Content Area */
@@ -44,6 +75,7 @@ body {
   display: flex;
   margin: 0;
   padding: 0;
+  overflow-y: auto;
 }
 
 /* Style override for non-homepage content */
@@ -103,6 +135,11 @@ body {
   .app-main > *:not(.home-page) {
     padding: 1rem;
   }
+
+  /* Adjust scrollbar size for mobile */
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
 }
 
-/* Last updated by jake1318 on 2025-01-31 04:40:30 UTC */
+/* Last updated by jake1318 on 2025-01-31 04:53:48 UTC */
