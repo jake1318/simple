@@ -14,8 +14,9 @@ import {
 import TokenSwap from "./components/TokenSwap";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
-import Dex from "./components/Dex"; // Add this import
-import Marketplace from "./components/MarketPlace"; // Add this import
+import Dex from "./components/Dex";
+import Marketplace from "./components/MarketPlace";
+import HomePage from "./components/HomePage"; // Add this import
 import "@mysten/dapp-kit/dist/index.css";
 import "./App.css";
 
@@ -35,7 +36,8 @@ function App() {
               <Navbar />
               <main className="app-main">
                 <Routes>
-                  <Route path="/" element={<Navigate to="/swap" replace />} />
+                  <Route path="/" element={<HomePage />} />{" "}
+                  {/* Change this line */}
                   <Route path="/swap" element={<TokenSwap />} />
                   <Route path="/dex" element={<Dex />} />
                   <Route path="/marketplace" element={<Marketplace />} />

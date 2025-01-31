@@ -2,7 +2,7 @@
  * @file HomePage.css
  * @description Styles for the Home page component
  * @author jake1318
- * @updated 2025-01-29 02:31:15
+ * @updated 2025-01-31 03:53:50
  */
 
 /* Reset default styles */
@@ -18,11 +18,21 @@ body {
   background-color: #252525;
   color: #e0e0e0;
   line-height: 1.5;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+/* Main container for homepage */
+.home-page {
+  width: 100vw;
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
 }
 
 /* Hero Section - Specific to HomePage */
 .home-hero {
-  height: 100vh;
+  min-height: 100vh;
   width: 100vw;
   display: flex;
   flex-direction: column;
@@ -36,6 +46,8 @@ body {
   overflow: hidden;
   margin: 0;
   padding: 0;
+  margin-top: -64px;
+  padding-top: 64px;
 }
 
 .home-hero::before {
@@ -94,13 +106,12 @@ body {
 
 /* Combined Section */
 .combined-section {
-  width: 100%;
+  width: 100vw;
   margin: 0;
   padding: 60px 2rem;
   background: linear-gradient(-45deg, #1e1e1e, #00a3ff, #252525, #87cefa);
   background-size: 400% 400%;
   animation: gradientShift 10s ease infinite;
-  border-radius: 10px;
 }
 
 .features {
@@ -288,12 +299,6 @@ body {
   color: #666;
 }
 
-.timestamp {
-  font-family: monospace;
-  color: #87cefa;
-  opacity: 0.7;
-}
-
 /* Gradient Animation */
 @keyframes gradientShift {
   0% {
@@ -353,4 +358,4 @@ body {
   }
 }
 
-/* Last updated by jake1318 on 2025-01-29 02:31:15 UTC */
+/* Last updated by jake1318 on 2025-01-31 03:53:50 UTC */

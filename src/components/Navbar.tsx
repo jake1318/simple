@@ -1,3 +1,4 @@
+// src/components/Navbar.tsx
 import { Link } from "react-router-dom";
 import React from "react";
 import { ConnectButton, useCurrentAccount } from "@mysten/dapp-kit";
@@ -6,9 +7,8 @@ import "./Navbar.css";
 const Navbar: React.FC = () => {
   const account = useCurrentAccount();
 
-  // Define which pages are active (currently only "swap" and "home")
-  // Update the activePages array (line 10) to include the new routes:
-  const activePages = ["/", "/swap", "/dex", "/marketplace"]; // Added "/dex" and "/marketplace"
+  // Define which pages are active
+  const activePages = ["/", "/swap", "/dex", "/marketplace", "/search"]; // Added "/" for homepage
 
   return (
     <nav className="navbar">
