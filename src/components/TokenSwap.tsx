@@ -6,8 +6,11 @@ import {
 } from "@mysten/dapp-kit";
 import { DeepBookClient } from "@mysten/deepbook-v3";
 import { TransactionBlock } from "@mysten/sui.js/transactions";
-import { useState } from "react";
-import type { SuiTransactionBlockResponse } from "@mysten/sui.js/client";
+import { useState, useEffect } from "react";
+import type {
+  SuiTransactionBlockResponse,
+  CoinStruct,
+} from "@mysten/sui.js/client";
 import "./TokenSwap.css";
 
 // Available tokens and their decimals
@@ -44,6 +47,14 @@ const TokenSwap = () => {
     inputAmount: "",
     expectedOutput: "0",
   });
+  const [tokenBalances, setTokenBalances] = useState<{ [key: string]: string }>(
+    {
+      SUI: "0",
+      USDC: "0",
+      USDT: "0",
+    }
+  );
+  const [isLoadingBalances, setIsLoadingBalances] = useState(false);
 
   const { mutate: signAndExecuteTransactionBlock } =
     useSignAndExecuteTransactionBlock();
@@ -55,6 +66,75 @@ const TokenSwap = () => {
         env: "mainnet",
       })
     : null;
+
+  useEffect(() => {
+    if (currentAccount) {
+      fetchTokenBalances();
+
+      // Update balances every 30 seconds
+      const interval = setInterval(fetchTokenBalances, 30000);
+
+      return () => clearInterval(interval);
+    }
+  }, [currentAccount]);
+
+  const formatBalance = (balance: string, decimals: number): string => {
+    return (Number(balance) / Math.pow(10, decimals)).toFixed(decimals);
+  };
+
+  const fetchTokenBalances = async () => {
+    if (!currentAccount || !suiClient) return;
+
+    setIsLoadingBalances(true);
+    try {
+      // Fetch all coins owned by the account
+      const { data: coins } = await suiClient.getAllCoins({
+        owner: currentAccount.address,
+      });
+
+      // Create a map to store balances
+      const balanceMap: { [key: string]: string } = {
+        SUI: "0",
+        USDC: "0",
+        USDT: "0",
+      };
+
+      // Process each coin
+      coins.forEach((coin: CoinStruct) => {
+        // SUI token
+        if (coin.coinType === "0x2::sui::SUI") {
+          balanceMap.SUI = formatBalance(coin.balance, TOKENS.SUI.decimals);
+        }
+        // USDC token - replace with your actual USDC coin type
+        else if (
+          coin.coinType ===
+          "0x5d4b302506645c37ff133b98c4b50a5ae14841659738d6d733d59d0d217a93bf::coin::COIN"
+        ) {
+          balanceMap.USDC = formatBalance(coin.balance, TOKENS.USDC.decimals);
+        }
+        // USDT token - replace with your actual USDT coin type
+        else if (
+          coin.coinType ===
+          "0xc060006111016b8a020ad5b33834984a437aaa7d3c74c18e09a95d48aceab08c::coin::COIN"
+        ) {
+          balanceMap.USDT = formatBalance(coin.balance, TOKENS.USDT.decimals);
+        }
+      });
+
+      setTokenBalances(balanceMap);
+    } catch (error) {
+      console.error("Error fetching token balances:", error);
+    } finally {
+      setIsLoadingBalances(false);
+    }
+  };
+
+  const handleMaxClick = () => {
+    setAmounts({
+      ...amounts,
+      inputAmount: tokenBalances[fromToken],
+    });
+  };
 
   // Find the appropriate pool for the token pair
   const getPool = (tokenA: string, tokenB: string) => {
@@ -77,6 +157,15 @@ const TokenSwap = () => {
   async function handleSwap() {
     if (!currentAccount || !deepBookClient) {
       console.error("No wallet connected");
+      return;
+    }
+
+    // Add balance check
+    const inputBalance = Number(tokenBalances[fromToken]);
+    const inputAmount = Number(amounts.inputAmount);
+
+    if (inputAmount > inputBalance) {
+      console.error("Insufficient balance");
       return;
     }
 
@@ -120,6 +209,8 @@ const TokenSwap = () => {
               inputAmount: "",
               expectedOutput: "0",
             });
+            // Refresh balances after successful swap
+            fetchTokenBalances();
           },
           onError: (error: Error) => {
             console.error("Transaction failed:", error);
@@ -141,7 +232,10 @@ const TokenSwap = () => {
           <div className="token-section">
             <div className="token-header">
               <label></label>
-              <span className="balance">Balance: 0.00</span>
+              <span className="balance">
+                Balance:{" "}
+                {isLoadingBalances ? "Loading..." : tokenBalances[fromToken]}
+              </span>
             </div>
             <div className="input-group">
               <input
@@ -157,7 +251,13 @@ const TokenSwap = () => {
                 min="0"
                 step="0.000001"
               />
-              <button className="max-btn">MAX</button>
+              <button
+                className="max-btn"
+                onClick={handleMaxClick}
+                disabled={!currentAccount || isLoadingBalances}
+              >
+                MAX
+              </button>
             </div>
             <select
               className="token-select"
@@ -183,7 +283,10 @@ const TokenSwap = () => {
           <div className="token-section">
             <div className="token-header">
               <label></label>
-              <span className="balance">Balance: 0.00</span>
+              <span className="balance">
+                Balance:{" "}
+                {isLoadingBalances ? "Loading..." : tokenBalances[toToken]}
+              </span>
             </div>
             <div className="input-group">
               <input
